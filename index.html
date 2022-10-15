@@ -1,12 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cotizador Seguros</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cotizador Seguros</title>
+
+  <!-- Estilos -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    
+
+<body class="m-0 vh-100 row justify-content-center align-items-center">
+  <div class="container-fluid contenedor">
+    <h1 class="text-center titulo">Cotizador de Seguros</h1>
+    <p class="text-center subtitulo">Cotiza tu vehículo</p>
+    <form class="formulario">
+      <div class="form-group">
+        <p class="parrafo">Vehículo:</p>
+        <select name="auto" required class="form-select fs-5" id="seleccionAuto"
+          aria-label="Floating label select example">
+          <option value="cronos">Fiat Cronos</option>
+          <option value="208">Peugeot 208</option>
+          <option value="hilux">Toyota Hilux</option>
+          <option value="amarok">Volkswagen Amarok</option>
+          <option value="etios">Toyota Etios</option>
+          <option value="cruze">Chevrolet Cruze</option>
+          <option value="ranger">Ford Ranger</option>
+          <option value="kangoo">Renault Kangoo</option>
+          <option value="corolla">Toyota Corolla</option>
+          <option value="cactus">Citroën C4 Cactus</option>
+        </select>
+      </div>
+      <div class="form-group d-flex flex-row justify-content-between">
+        <p class="parrafo">Fabricación:</p>
+        <label class="etiqueta">
+          <input type="radio" name="fabricacion" value="nacional" checked class="input-radio">
+          Nacional
+        </label>
+        <label class="etiqueta">
+          <input type="radio" name="fabricacion" value="importado" class="input-radio">
+          Importado
+        </label>
+      </div>
+      <div class="form-group">
+        <p class="parrafo">Año:</p>
+        <select name="anio" required class="form-select fs-5" id="seleccionAnio"
+          aria-label="Floating label select example">
+          <option value="2022">2022</option>
+          <option value="2021">2021</option>
+          <option value="2020">2020</option>
+          <option value="2019">2019</option>
+          <option value="2018">2018</option>
+          <option value="2017">2017</option>
+          <option value="2016">2016</option>
+          <option value="2015">2015</option>
+          <option value="2014">2014</option>
+          <option value="2013">2013</option>
+          <option value="2012">2012</option>
+          <option value="2011">2011</option>
+          <option value="2010">2010</option>
+          <option value="2009">2009</option>
+          <option value="2008">2008</option>
+          <option value="2007">2007</option>
+          <option value="2006">2006</option>
+          <option value="2005">2005</option>
+          <option value="2004">2004</option>
+          <option value="2003">2003</option>
+          <option value="2002">2002</option>
+          <option value="2001">2001</option>
+        </select>
+      </div>
+      <div class="form-group d-flex flex-row justify-content-end">
+        <button type="button" class="btn btn-primary fs-2" id="cotizar">Cotizar</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="container-fluid contenedor2 ocultar">
+    <h1 class="text-center titulo">Cotizador de Seguros</h1>
+    <p class="text-center subtitulo">Cotiza tu vehículo</p>
+    <ul class="list-group list-group-flush listaCotizada">
+      <li class="list-group-item" id="autoCotizado">Auto cotizado</li>
+      <li class="list-group-item" id="anioCotizado">Anio cotizado</li>
+      <li class="list-group-item" id="fabricacionCotizada">Fabricacion cotizada</li>
+    </ul>
+    <div class="d-flex flex-row tarjetas">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Cobertura Básica</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Responsabilidad Civil Unicamente</h6>
+          <p class="card-text text-center" id="cuotasBasica"></p>
+          <h5 class="card-title text-center" id="costoBasica"></h5>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Cobertura Standard</h5>
+          <h6 class="card-subtitle mb-2 text-muted">RC + Robo-Inc. Total/Parcial</h6>
+          <p class="card-text text-center" id="cuotasStandard"></p>
+          <h5 class="card-title text-center" id="costoStandard"></h5>
+
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Cobertura Premium</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Todo Riesgo</h6>
+          <p class="card-text text-center" id="cuotasPremium"></p>
+          <h5 class="card-title text-center" id="costoPremium"></h5>
+        </div>
+      </div>
+    </div>
+    <div class="form-group d-flex flex-row justify-content-end">
+      <button type="button" class="btn btn-primary fs-2 volver" id="volver">Volver</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+  <script src="js/main.js"></script>
 </body>
+
 </html>
