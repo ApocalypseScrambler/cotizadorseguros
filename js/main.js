@@ -21,6 +21,15 @@ document.getElementById('cotizar').onclick = function () {
         coberturaBasica *= 1.15
     }
 
+    let cantidadAnios = new Date().getFullYear() - anio;
+
+    // Aplicamos un 3% de descuento por cada año, sobre el saldo de cada año
+    let i = 0;
+    while (cantidadAnios != i) {
+        coberturaBasica -= coberturaBasica * 3 / 100;
+        i += 1;
+    }
+
     // Si el vehiculo es nacional +15%, importado +30% para cobertura Standard
     switch (fabricacion) {
         case 'nacional':
@@ -31,19 +40,12 @@ document.getElementById('cotizar').onclick = function () {
             break;
     }
 
-    let cantidadAnios = new Date().getFullYear() - anio;
-
-    // Por cada año de antiguedad distinto de cero, aplicamos un descuento del 3% por año
-    if (cantidadAnios != 0) {
-        coberturaStandard -= coberturaStandard * ((cantidadAnios * 3) / 100);
-    }
-
     // Cobertura Premium +50% que la Standard
     coberturaPremium = coberturaStandard * 1.5;
 
-    coberturaBasica =  Math.round(coberturaBasica);
+    coberturaBasica = Math.round(coberturaBasica);
     coberturaStandard = Math.round(coberturaStandard);
-    coberturaPremium =  Math.round(coberturaPremium);
+    coberturaPremium = Math.round(coberturaPremium);
 
     switch (auto) {
         case 'cronos':
@@ -84,7 +86,7 @@ document.getElementById('cotizar').onclick = function () {
     } else {
         document.getElementById('fabricacionCotizada').textContent = "Fabricación: Importado";
     }
-    
+
     document.getElementById('costoBasica').textContent = "$ " + coberturaBasica;
     document.getElementById('costoStandard').textContent = "$ " + coberturaStandard;
     document.getElementById('costoPremium').textContent = "$ " + coberturaPremium;

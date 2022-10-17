@@ -13,8 +13,8 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="m-0 vh-100 row justify-content-center align-items-center">
-  <div class="container-fluid contenedor">
+<body class="row justify-content-center align-items-center">
+  <div class="container-fluid contenedor row justify-content-center align-items-center">
     <h1 class="text-center titulo">Cotizador de Seguros</h1>
     <p class="text-center subtitulo">Cotiza tu vehículo</p>
     <form class="formulario">
@@ -34,7 +34,7 @@
           <option value="cactus">Citroën C4 Cactus</option>
         </select>
       </div>
-      <div class="form-group d-flex flex-row justify-content-between">
+      <div class="form-group d-flex flex-row justify-content-between align-items-center">
         <p class="parrafo">Fabricación:</p>
         <label class="etiqueta">
           <input type="radio" name="fabricacion" value="nacional" checked class="input-radio">
@@ -74,12 +74,12 @@
         </select>
       </div>
       <div class="form-group d-flex flex-row justify-content-end">
-        <button type="button" class="btn btn-primary fs-2" id="cotizar">Cotizar</button>
+        <button type="button" class="btn btn-primary fs-2 cotizar" id="cotizar">Cotizar</button>
       </div>
     </form>
   </div>
 
-  <div class="container-fluid contenedor2 ocultar">
+  <div class="container-fluid contenedor2 ocultar row justify-content-center align-items-center">
     <h1 class="text-center titulo">Cotizador de Seguros</h1>
     <p class="text-center subtitulo">Cotiza tu vehículo</p>
     <ul class="list-group list-group-flush listaCotizada">
@@ -87,13 +87,16 @@
       <li class="list-group-item" id="anioCotizado">Anio cotizado</li>
       <li class="list-group-item" id="fabricacionCotizada">Fabricacion cotizada</li>
     </ul>
-    <div class="d-flex flex-row tarjetas">
+    <div class="tarjetas">
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Cobertura Básica</h5>
           <h6 class="card-subtitle mb-2 text-muted">Responsabilidad Civil Unicamente</h6>
           <p class="card-text text-center" id="cuotasBasica"></p>
           <h5 class="card-title text-center" id="costoBasica"></h5>
+          <div class="col-md-12 text-center">
+            <button type="button" class="btn btn-primary fs-6">Contratar</button>
+          </div>
         </div>
       </div>
 
@@ -103,7 +106,9 @@
           <h6 class="card-subtitle mb-2 text-muted">RC + Robo-Inc. Total/Parcial</h6>
           <p class="card-text text-center" id="cuotasStandard"></p>
           <h5 class="card-title text-center" id="costoStandard"></h5>
-
+          <div class="col-md-12 text-center">
+            <button type="button" class="btn btn-primary fs-6">Contratar</button>
+          </div>
         </div>
       </div>
 
@@ -113,6 +118,9 @@
           <h6 class="card-subtitle mb-2 text-muted">Todo Riesgo</h6>
           <p class="card-text text-center" id="cuotasPremium"></p>
           <h5 class="card-title text-center" id="costoPremium"></h5>
+          <div class="col-md-12 text-center">
+            <button type="button" class="btn btn-primary fs-6">Contratar</button>
+          </div>
         </div>
       </div>
     </div>

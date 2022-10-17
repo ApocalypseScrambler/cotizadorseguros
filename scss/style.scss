@@ -4,10 +4,10 @@
 
 .contenedor, .contenedor2 {
     border-radius: 8px;
-    width: 70%;
+    width: 90%;
     display: flex;
-    flex-direction: column;
-    height: 70%;
+    // flex-direction: column;
+    height: 90%;
     padding: 0 10%;
     box-shadow: 10px 10px 5px 0px rgba(255,255,255,0.75);
     border: 1px solid #FFF;
@@ -17,61 +17,48 @@
 
 .contenedor2 {
     align-items: center;
-    gap: 1rem;
 }
 
 .titulo {
-    font-size: 5rem;
+    font-size: 3rem;
     margin: 0;
 }
 
 .subtitulo {
-    font-size: 3.5rem;
+    font-size: 2rem;
+    margin: 0;
 }
 
 .parrafo {
-    font-size: 2rem;
+    font-size: 1.5rem;
+    margin: 0;
 }
 
 .etiqueta {
-    font-size: 1.8rem;
+    font-size: 1.2rem;
 }
 
-@media (max-width: 977px) {
-    .titulo {
-        font-size: 4.5rem;
-    }
+.listaCotizada {
+    font-size: 1rem;
 }
 
-@media (max-width: 879) {
+@media (max-width: 480px) {
     .titulo {
-        font-size: 4rem;
+        font-size: 2.7rem;
     }
-}
-
-@media (max-width: 590px) {
-    .titulo {
-      font-size: 4.2rem;
-    }
-
+    
     .subtitulo {
-        font-size: 2.9rem;
+        font-size: 1.7rem;
     }
     
     .parrafo {
-        font-size: 1.8rem;
-    }
-    
-    .etiqueta {
-        font-size: 1.4rem;
-    }
-  }
-
-  @media (max-width: 496px) {
-    .etiqueta {
         font-size: 1.2rem;
     }
-  }
+    
+    .etiqueta, .listaCotizada {
+        font-size: 0.9rem;
+    }
+}
 
 .formulario {
     display: flex;
@@ -84,9 +71,35 @@
 }
 
 .tarjetas {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
     gap: 1rem;
     justify-content: space-between;
 }
+
+.card {
+    width: 25%;
+}
+
+@media (max-width: 768px) {
+    .tarjetas {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card-body {
+        padding: 0;
+        text-align: center;
+    }
+
+    .card {
+        width: 75%;
+    }
+}
+
+
 
 .listaCotizada {
     width: 50%;
@@ -96,7 +109,6 @@
 
 }
 
-.volver {
-    margin-top: 5rem;
-    
+.volver, .cotizar {
+    margin-top: 2rem;    
 }
