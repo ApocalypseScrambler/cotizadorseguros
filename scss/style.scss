@@ -1,16 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import 'base/normalize';
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+@import 'base/variables';
 @import 'base/globales';
+@import 'base/mixins';
 
-.contenedor, .contenedor2 {
-    border-radius: 8px;
+.contenedor,
+.contenedor2 {
+    border-radius: $borde-redondo;
     width: 90%;
     display: flex;
-    // flex-direction: column;
+    flex-direction: column;
+    justify-content: space-around;
     height: 90%;
     padding: 0 10%;
-    box-shadow: 10px 10px 5px 0px rgba(255,255,255,0.75);
-    border: 1px solid #FFF;
+    box-shadow: 10px 10px 5px 0px rgba(255, 255, 255, 0.75);
+    border: $borde-negro;
     background: rgba(255, 255, 255, .4);
     color: black;
 }
@@ -20,44 +24,26 @@
 }
 
 .titulo {
-    font-size: 3rem;
+    font-size: 7rem;
     margin: 0;
 }
 
 .subtitulo {
-    font-size: 2rem;
+    font-size: 5rem;
     margin: 0;
 }
 
 .parrafo {
-    font-size: 1.5rem;
+    font-size: 4rem;
     margin: 0;
 }
 
 .etiqueta {
-    font-size: 1.2rem;
+    font-size: 3rem;
 }
 
 .listaCotizada {
-    font-size: 1rem;
-}
-
-@media (max-width: 480px) {
-    .titulo {
-        font-size: 2.7rem;
-    }
-    
-    .subtitulo {
-        font-size: 1.7rem;
-    }
-    
-    .parrafo {
-        font-size: 1.2rem;
-    }
-    
-    .etiqueta, .listaCotizada {
-        font-size: 0.9rem;
-    }
+    font-size: 2rem;
 }
 
 .formulario {
@@ -79,10 +65,100 @@
 }
 
 .card {
+    text-align: center;
     width: 25%;
+    font-size: 1.5rem;
 }
 
-@media (max-width: 768px) {
+.listaCotizada {
+    width: 50%;
+    font-weight: bold;
+    border-radius: $borde-redondo;
+    text-align: center;
+}
+
+.volver,
+.cotizar {
+    margin-top: 2rem;
+}
+
+@include desktop-xl {
+    .titulo {
+        font-size: 5rem;
+    }
+
+    .subtitulo {
+        font-size: 4rem;
+    }
+
+    .parrafo {
+        font-size: 3rem;
+    }
+
+    .etiqueta {
+        font-size: 2.5rem;
+    }
+
+    .listaCotizada {
+        font-size: 2rem;
+    }
+
+    .card {
+        font-size: 1.6rem;
+    }
+}
+
+@include desktop {
+    .titulo {
+        font-size: 4.3rem;
+    }
+
+    .subtitulo {
+        font-size: 3.5rem;
+    }
+
+    .parrafo {
+        font-size: 2.5rem;
+    }
+
+    .etiqueta {
+        font-size: 2rem;
+    }
+
+    .listaCotizada {
+        font-size: 1.6rem;
+    }
+
+    .card {
+        font-size: 1.4rem;
+    }
+}
+
+@include tablet {
+    .titulo {
+        font-size: 3.8rem;
+    }
+
+    .subtitulo {
+        font-size: 3rem;
+    }
+
+    .parrafo {
+        font-size: 2rem;
+    }
+
+    .etiqueta {
+        font-size: 1.7rem;
+    }
+
+    .listaCotizada {
+        font-size: 1.4rem;
+    }
+
+    .card {
+        font-size: 1.2rem;
+    }
+
     .tarjetas {
         flex-direction: column;
         justify-content: center;
@@ -97,18 +173,23 @@
     .card {
         width: 75%;
     }
+
+    .listaCotizada {
+        width: 75%;
+    }
 }
 
+@include moviles {
+    .titulo {
+        font-size: 3rem;
+    }
 
+    .subtitulo {
+        font-size: 2.4rem;
+    }
 
-.listaCotizada {
-    width: 50%;
-    text-align: center;
-    font-weight: bold;
-    border-radius: 10px;
+    .listaCotizada {
+        font-size: 1.4rem;
+    }
 
-}
-
-.volver, .cotizar {
-    margin-top: 2rem;    
 }

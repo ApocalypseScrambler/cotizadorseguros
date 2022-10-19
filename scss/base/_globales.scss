@@ -1,9 +1,8 @@
 /** Globales **/
 html {
     box-sizing: border-box;
-    font-size: 62.5%;
-    /* 1rem = 10px */
-    font-family: 'Roboto Mono', monospace;
+    font-size: 62.5%; /* 1rem = 10px */
+    font-family: $fuente-principal;
 }
 
 html,
