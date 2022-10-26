@@ -1,99 +1,117 @@
 
 document.getElementById('cotizar').onclick = function () {
+    
+    class cobertura {
+        constructor(valor) {
+            this.valor = valor;
+        }
 
+        costo() {
+            this.valor = Math.round(this.valor)
+        }
+
+        cuotas() {
+            return (this.valor / 3).toFixed(2)
+        }
+    }
+    
     // Se van a ofrecer 3 tipos de coberturas con una base de costo de 3500
-    let coberturaBasica = 3500;
-
     // la cobertura standard se construira a partir del costo de la basica y cambiara dependiendo de la fabricacion del vehiculo
-    let coberturaStandard = 0;
-
     // la cobertura premium será un 50% mayor al costo calculado para standard
-    let coberturaPremium = 0;
-
-    let fabricacion = document.querySelector('input[type=radio][name=fabricacion]:checked').value;
-    let auto = document.getElementById('seleccionAuto').value;
-    let anio = document.getElementById('seleccionAnio').value;
-
+    const coberturaBasica = new cobertura(3500);
+    const coberturaStandard = new cobertura(0);
+    const coberturaPremium = new cobertura(0);
+    
+    const vehiculoCotizado = {
+        fabricacion: document.querySelector('input[type=radio][name=fabricacion]:checked').value,
+        auto: document.getElementById('seleccionAuto').value,
+        anio: document.getElementById('seleccionAnio').value
+    }
+    
     // Si el vehiculo es un auto subimos un 5% el costo, si es otro subimos un 15%
-    if (auto == 'cronos' || auto == '208' || auto == 'etios' || auto == 'cruze' || auto == 'kangoo' || auto == 'corolla' || auto == 'cactus') {
-        coberturaBasica *= 1.05
+    const esUnAuto = ["cronos","208","etios","cruze","kangoo","corolla","cactus"]
+
+    if (esUnAuto.includes(vehiculoCotizado.auto))  {
+        coberturaBasica.valor *= 1.05
     } else {
-        coberturaBasica *= 1.15
+        coberturaBasica.valor *= 1.15
     }
 
-    let cantidadAnios = new Date().getFullYear() - anio;
+    let cantidadAnios = new Date().getFullYear() - vehiculoCotizado.anio;
 
     // Aplicamos un 3% de descuento por cada año, sobre el saldo de cada año
     let i = 0;
     while (cantidadAnios != i) {
-        coberturaBasica -= coberturaBasica * 3 / 100;
+        coberturaBasica.valor -= coberturaBasica.valor * 3 / 100;
         i += 1;
     }
 
     // Si el vehiculo es nacional +15%, importado +30% para cobertura Standard
-    switch (fabricacion) {
+    switch (vehiculoCotizado.fabricacion) {
         case 'nacional':
-            coberturaStandard = coberturaBasica * 1.15
+            coberturaStandard.valor = coberturaBasica.valor * 1.15
             break;
         case 'importado':
-            coberturaStandard = coberturaBasica * 1.30
+            coberturaStandard.valor = coberturaBasica.valor * 1.30
             break;
     }
 
     // Cobertura Premium +50% que la Standard
-    coberturaPremium = coberturaStandard * 1.5;
+    coberturaPremium.valor = coberturaStandard.valor * 1.5;
 
-    coberturaBasica = Math.round(coberturaBasica);
-    coberturaStandard = Math.round(coberturaStandard);
-    coberturaPremium = Math.round(coberturaPremium);
+    coberturaBasica.costo();
+    coberturaStandard.costo();
+    coberturaPremium.costo();
 
-    switch (auto) {
+    switch (vehiculoCotizado.auto) {
         case 'cronos':
-            auto = "Fiat Cronos"
+            vehiculoCotizado.auto = "Fiat Cronos"
             break;
         case '208':
-            auto = "Peugeot 208"
+            vehiculoCotizado.auto = "Peugeot 208"
             break;
         case 'hilux':
-            auto = "Toyota Hilux"
+            vehiculoCotizado.auto = "Toyota Hilux"
             break;
         case 'amarok':
-            auto = "Volkswagen Amarok"
+            vehiculoCotizado.auto = "Volkswagen Amarok"
             break;
         case 'etios':
-            auto = "Toyota Etios"
+            vehiculoCotizado.auto = "Toyota Etios"
             break;
         case 'cruze':
-            auto = "Chevrolet Cruze"
+            vehiculoCotizado.auto = "Chevrolet Cruze"
             break;
         case 'kangoo':
-            auto = "Renault Kangoo"
+            vehiculoCotizado.auto = "Renault Kangoo"
             break;
         case 'ranger':
-            auto = "Ford Ranger"
+            vehiculoCotizado.auto = "Ford Ranger"
             break;
         case 'corolla':
-            auto = "Toyota Corolla"
+            vehiculoCotizado.auto = "Toyota Corolla"
             break;
         case 'cactus':
-            auto = "Citroën C4 Cactus"
+            vehiculoCotizado.auto = "Citroën C4 Cactus"
             break;
     }
-    document.getElementById('autoCotizado').textContent = "Auto Cotizado: " + auto;
-    document.getElementById('anioCotizado').textContent = "Año Cotizado: " + anio;
-    if (fabricacion == 'nacional') {
+
+    document.getElementById('autoCotizado').textContent = "Auto Cotizado: " + vehiculoCotizado.auto;
+    document.getElementById('anioCotizado').textContent = "Año Cotizado: " + vehiculoCotizado.anio;
+    
+    if (vehiculoCotizado.fabricacion == 'nacional') {
         document.getElementById('fabricacionCotizada').textContent = "Fabricación: Nacional";
     } else {
         document.getElementById('fabricacionCotizada').textContent = "Fabricación: Importado";
     }
+    
+    document.getElementById('costoBasica').textContent = "$ " + coberturaBasica.valor;
+    document.getElementById('costoStandard').textContent = "$ " + coberturaStandard.valor;
+    document.getElementById('costoPremium').textContent = "$ " + coberturaPremium.valor;
 
-    document.getElementById('costoBasica').textContent = "$ " + coberturaBasica;
-    document.getElementById('costoStandard').textContent = "$ " + coberturaStandard;
-    document.getElementById('costoPremium').textContent = "$ " + coberturaPremium;
-
-    document.getElementById('cuotasBasica').textContent = "3 cuotas de $ " + (coberturaBasica / 3).toFixed(2);
-    document.getElementById('cuotasStandard').textContent = "3 cuotas de $ " + (coberturaStandard / 3).toFixed(2);
-    document.getElementById('cuotasPremium').textContent = "3 cuotas de $ " + (coberturaPremium / 3).toFixed(2);
+    document.getElementById('cuotasBasica').textContent = "3 cuotas de $ " + coberturaBasica.cuotas();
+    document.getElementById('cuotasStandard').textContent = "3 cuotas de $ " + coberturaStandard.cuotas();
+    document.getElementById('cuotasPremium').textContent = "3 cuotas de $ " + coberturaPremium.cuotas();
 
     const contenedor = document.querySelector('.contenedor');
     contenedor.classList.add('ocultar');
