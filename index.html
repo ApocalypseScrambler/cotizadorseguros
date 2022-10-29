@@ -22,16 +22,16 @@
         <p class="parrafo">Vehículo:</p>
         <select name="auto" required class="form-select fs-5" id="seleccionAuto"
           aria-label="Floating label select example">
-          <option value="cronos">Fiat Cronos</option>
-          <option value="208">Peugeot 208</option>
-          <option value="hilux">Toyota Hilux</option>
-          <option value="amarok">Volkswagen Amarok</option>
-          <option value="etios">Toyota Etios</option>
-          <option value="cruze">Chevrolet Cruze</option>
-          <option value="ranger">Ford Ranger</option>
-          <option value="kangoo">Renault Kangoo</option>
-          <option value="corolla">Toyota Corolla</option>
-          <option value="cactus">Citroën C4 Cactus</option>
+          <option value="Fiat Cronos">Fiat Cronos</option>
+          <option value="Peugeot 208">Peugeot 208</option>
+          <option value="Toyota Hilux">Toyota Hilux</option>
+          <option value="Volkswagen Amarok">Volkswagen Amarok</option>
+          <option value="Toyota Etios">Toyota Etios</option>
+          <option value="Chevrolet Cruze">Chevrolet Cruze</option>
+          <option value="Ford Ranger">Ford Ranger</option>
+          <option value="Renault Kangoo">Renault Kangoo</option>
+          <option value="Toyota Corolla">Toyota Corolla</option>
+          <option value="Citroën C4 Cactus">Citroën C4 Cactus</option>
         </select>
       </div>
       <div class="form-group d-flex flex-row justify-content-between align-items-center">
@@ -73,6 +73,36 @@
           <option value="2001">2001</option>
         </select>
       </div>
+      <div class="form-group">
+        <p class="parrafo">Provincia:</p>
+        <select name="provincia" required class="form-select fs-5" id="provinciaRiesgo"
+          aria-label="Floating label select example">
+          <option value="Buenos Aires">Buenos Aires</option>
+          <option value="Capital Federal">Capital Federal</option>
+          <option value="Entre Ríos">Entre Ríos</option>
+          <option value="Corrientes">Corrientes</option>
+          <option value="Misiones">Misiones</option>
+          <option value="Formosa">Formosa</option>
+          <option value="Chaco">Chaco</option>
+          <option value="Salta">Salta</option>
+          <option value="Jujuy">Jujuy</option>
+          <option value="Tucumán">Tucumán</option>
+          <option value="Catamarca">Catamarca</option>
+          <option value="San Juan">San Juan</option>
+          <option value="La Rioja">La Rioja</option>
+          <option value="Mendoza">Mendoza</option>
+          <option value="Córdoba">Córdoba</option>
+          <option value="San Luis">San Luis</option>
+          <option value="La Pampa">La Pampa</option>
+          <option value="Santa Fe">Santa Fe</option>
+          <option value="Neuquén">Neuquén</option>
+          <option value="Rio Negro">Rio Negro</option>
+          <option value="Santa Cruz">Santa Cruz</option>
+          <option value="Chubut">Chubut</option>
+          <option value="Tierra del Fuego">Tierra del Fuego</option>
+          <option value="Santiago del Estero">Santiago del Estero</option>
+        </select>
+      </div>
       <div class="form-group d-flex flex-row justify-content-end">
         <button type="button" class="btn btn-primary fs-2 cotizar" id="cotizar">Cotizar</button>
       </div>
@@ -83,9 +113,8 @@
     <h1 class="text-center titulo">Cotizador de Seguros</h1>
     <p class="text-center subtitulo">Cotiza tu vehículo</p>
     <ul class="list-group list-group-flush listaCotizada">
-      <li class="list-group-item" id="autoCotizado">Auto cotizado</li>
-      <li class="list-group-item" id="anioCotizado">Anio cotizado</li>
-      <li class="list-group-item" id="fabricacionCotizada">Fabricacion cotizada</li>
+      <li class="list-group-item" id="autoMasAnioCotizado"></li>
+      <li class="list-group-item" id="fabricacionMasProvinciaCotizada"></li>
     </ul>
     <div class="tarjetas">
       <div class="card">

@@ -1,6 +1,6 @@
 
 document.getElementById('cotizar').onclick = function () {
-    
+
     class cobertura {
         constructor(valor) {
             this.valor = valor;
@@ -14,24 +14,25 @@ document.getElementById('cotizar').onclick = function () {
             return (this.valor / 3).toFixed(2)
         }
     }
-    
+
     // Se van a ofrecer 3 tipos de coberturas con una base de costo de 3500
     // la cobertura standard se construira a partir del costo de la basica y cambiara dependiendo de la fabricacion del vehiculo
     // la cobertura premium será un 50% mayor al costo calculado para standard
     const coberturaBasica = new cobertura(3500);
     const coberturaStandard = new cobertura(0);
     const coberturaPremium = new cobertura(0);
-    
+
     const vehiculoCotizado = {
         fabricacion: document.querySelector('input[type=radio][name=fabricacion]:checked').value,
         auto: document.getElementById('seleccionAuto').value,
-        anio: document.getElementById('seleccionAnio').value
+        anio: document.getElementById('seleccionAnio').value,
+        provincia: document.getElementById('provinciaRiesgo').value
     }
-    
-    // Si el vehiculo es un auto subimos un 5% el costo, si es otro subimos un 15%
-    const esUnAuto = ["cronos","208","etios","cruze","kangoo","corolla","cactus"]
 
-    if (esUnAuto.includes(vehiculoCotizado.auto))  {
+    // Si el vehiculo es un auto subimos un 5% el costo, si es otro subimos un 15%
+    const esUnAuto = ["Fiat Cronos", "Peugeot 208", "Toyota Etios", "Chevrolet Cruze", "Renault Kangoo", "Toyota Corolla", "Citroën C4 Cactus"]
+
+    if (esUnAuto.includes(vehiculoCotizado.auto)) {
         coberturaBasica.valor *= 1.05
     } else {
         coberturaBasica.valor *= 1.15
@@ -56,6 +57,48 @@ document.getElementById('cotizar').onclick = function () {
             break;
     }
 
+    const provincias = [
+        { nombre: "Buenos Aires", riesgo: "Alto" },
+        { nombre: "Capital Federal", riesgo: "Muy Alto" },
+        { nombre: "Entre Ríos", riesgo: "Medio" },
+        { nombre: "Corrientes", riesgo: "Bajo" },
+        { nombre: "Misiones", riesgo: "Alto" },
+        { nombre: "Formosa", riesgo: "Alto" },
+        { nombre: "Chaco", riesgo: "Bajo" },
+        { nombre: "Salta", riesgo: "Medio" },
+        { nombre: "Jujuy", riesgo: "Medio" },
+        { nombre: "Tucumán", riesgo: "Bajo" },
+        { nombre: "Catamarca", riesgo: "Medio" },
+        { nombre: "San Juan", riesgo: "Medio" },
+        { nombre: "La Rioja", riesgo: "Alto" },
+        { nombre: "Mendoza", riesgo: "Alto" },
+        { nombre: "Córdoba", riesgo: "Muy Alto" },
+        { nombre: "San Luis", riesgo: "Medio" },
+        { nombre: "La Pampa", riesgo: "Medio" },
+        { nombre: "Santa Fe", riesgo: "Alto" },
+        { nombre: "Neuquén", riesgo: "Medio" },
+        { nombre: "Rio Negro", riesgo: "Alto" },
+        { nombre: "Santa Cruz", riesgo: "Medio" },
+        { nombre: "Chubut", riesgo: "Medio" },
+        { nombre: "Tierra del Fuego", riesgo: "Bajo" },
+        { nombre: "Santiago del Estero", riesgo: "Medio" },
+    ]
+
+    const buscoProvincia = provincias.find((provincia) => provincia.nombre === vehiculoCotizado.provincia)
+
+    switch (buscoProvincia.riesgo) {
+        case 'Muy Alto':
+            coberturaStandard.valor *= 1.45
+            break;
+        case 'Alto':
+            coberturaStandard.valor *= 1.3
+            break;
+        case 'Medio':
+            coberturaStandard.valor *= 1.15
+            break;
+    // Para bajo, mantenemos el costo
+    }
+
     // Cobertura Premium +50% que la Standard
     coberturaPremium.valor = coberturaStandard.valor * 1.5;
 
@@ -63,46 +106,12 @@ document.getElementById('cotizar').onclick = function () {
     coberturaStandard.costo();
     coberturaPremium.costo();
 
-    switch (vehiculoCotizado.auto) {
-        case 'cronos':
-            vehiculoCotizado.auto = "Fiat Cronos"
-            break;
-        case '208':
-            vehiculoCotizado.auto = "Peugeot 208"
-            break;
-        case 'hilux':
-            vehiculoCotizado.auto = "Toyota Hilux"
-            break;
-        case 'amarok':
-            vehiculoCotizado.auto = "Volkswagen Amarok"
-            break;
-        case 'etios':
-            vehiculoCotizado.auto = "Toyota Etios"
-            break;
-        case 'cruze':
-            vehiculoCotizado.auto = "Chevrolet Cruze"
-            break;
-        case 'kangoo':
-            vehiculoCotizado.auto = "Renault Kangoo"
-            break;
-        case 'ranger':
-            vehiculoCotizado.auto = "Ford Ranger"
-            break;
-        case 'corolla':
-            vehiculoCotizado.auto = "Toyota Corolla"
-            break;
-        case 'cactus':
-            vehiculoCotizado.auto = "Citroën C4 Cactus"
-            break;
-    }
-
-    document.getElementById('autoCotizado').textContent = "Auto Cotizado: " + vehiculoCotizado.auto;
-    document.getElementById('anioCotizado').textContent = "Año Cotizado: " + vehiculoCotizado.anio;
+    document.getElementById('autoMasAnioCotizado').textContent = "Auto Cotizado: " + vehiculoCotizado.auto + " - Año Cotizado: " + vehiculoCotizado.anio;
     
     if (vehiculoCotizado.fabricacion == 'nacional') {
-        document.getElementById('fabricacionCotizada').textContent = "Fabricación: Nacional";
+        document.getElementById('fabricacionMasProvinciaCotizada').textContent = "Fabricación: Nacional" + " - Provincia: " + vehiculoCotizado.provincia;
     } else {
-        document.getElementById('fabricacionCotizada').textContent = "Fabricación: Importado";
+        document.getElementById('fabricacionMasProvinciaCotizada').textContent = "Fabricación: Importado" + " - Provincia: " + vehiculoCotizado.provincia;
     }
     
     document.getElementById('costoBasica').textContent = "$ " + coberturaBasica.valor;

@@ -407,7 +407,7 @@ body {
 }
 
 .listaCotizada {
-  width: 50%;
+  width: 75%;
   font-weight: bold;
   border-radius: 8px;
   text-align: center;
@@ -460,19 +460,19 @@ body {
 }
 @media (max-width: 768px) {
   .titulo {
-    font-size: 3.8rem;
-  }
-  .subtitulo {
     font-size: 3rem;
   }
+  .subtitulo {
+    font-size: 2.3rem;
+  }
   .parrafo {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   .etiqueta {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
   }
   .listaCotizada {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
   .card {
     font-size: 1.2rem;
@@ -489,22 +489,20 @@ body {
   .card {
     width: 75%;
   }
-  .listaCotizada {
-    width: 75%;
-  }
 }
 @media (max-width: 576px) {
   .titulo {
-    font-size: 3rem;
+    font-size: 2.6rem;
   }
   .subtitulo {
-    font-size: 2.4rem;
+    font-size: 2.2rem;
   }
   .listaCotizada {
-    font-size: 1.4rem;
+    width: 100%;
+    font-size: 1rem;
   }
   .etiqueta {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 }
 
