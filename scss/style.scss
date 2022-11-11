@@ -5,7 +5,8 @@
 @import 'base/mixins';
 
 .contenedor,
-.contenedor2 {
+.contenedor2,
+.contenedor3 {
     border-radius: $borde-redondo;
     width: 90%;
     display: flex;
@@ -17,6 +18,7 @@
     border: $borde-negro;
     background: rgba(255, 255, 255, .4);
     color: black;
+    align-items: center;
 }
 
 .contenedor2 {
@@ -193,4 +195,112 @@
         font-size: 1.2rem;
     }
 
+}
+
+.cotizando {
+    float: left;
+    width: 25rem;
+    height: 25rem;
+    padding: 2rem;
+    border-radius: $borde-redondo;
+    text-align: center;
+    background-color: #d8d8d8;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.cotizando p {
+    font-size: large;
+}
+
+.spinner {
+    position: relative;
+    width: 4.5rem;
+    height: 4.5rem;
+    margin: 5rem auto;
+}
+
+.bubble-1,
+.bubble-2 {
+    position: absolute;
+    //top: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 100%;
+    background-color: #4b9cdb;
+}
+
+.bubble-2 {
+    top: auto;
+    bottom: 0;
+}
+
+.clear {
+    clear: both;
+}
+
+.cotizandoEspera .spinner {
+    animation: loadingI 2s linear infinite;
+}
+
+.cotizandoEspera .bubble-1,
+.cotizandoEspera .bubble-2 {
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.cotizandoEspera .bubble-2 {
+    animation-delay: -1s;
+}
+
+@keyframes loadingI {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+}
+
+
+
+.tarjetaCotizada {
+    width: 75%;
+}
+
+.formulario {
+    gap: 1rem;
+    width: 100%;
+}
+
+@include moviles {
+    .tarjetaCotizada {
+        width: 100%;
+    }
+
+    .cotizando {
+        width: 20rem;
+        height: 20rem;
+    }
+}
+
+.invalid-feedback {
+    font-size: 1.1rem;
+    color: #000;
+    font-weight: bold;
+}
+
+.tituloTarjeta {
+    text-decoration: underline;
+    font-weight: bold;
 }

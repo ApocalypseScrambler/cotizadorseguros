@@ -14,6 +14,10 @@
 </head>
 
 <body class="row justify-content-center align-items-center">
+
+  <!--  Primer Contenedor -->
+  <!--  Opciones de contratación del seguro -->
+
   <div class="container-fluid contenedor row">
     <h1 class="text-center titulo">Cotizador de Seguros</h1>
     <p class="text-center subtitulo">Cotiza tu vehículo</p>
@@ -37,11 +41,11 @@
       <div class="form-group d-flex flex-row justify-content-between align-items-center">
         <p class="parrafo">Fabricación:</p>
         <label class="etiqueta">
-          <input type="radio" name="fabricacion" value="nacional" checked class="input-radio">
+          <input type="radio" name="fabricacion" value="Nacional" checked class="input-radio">
           Nacional
         </label>
         <label class="etiqueta">
-          <input type="radio" name="fabricacion" value="importado" class="input-radio">
+          <input type="radio" name="fabricacion" value="Importado" class="input-radio">
           Importado
         </label>
       </div>
@@ -109,6 +113,23 @@
     </form>
   </div>
 
+  <!--  Espera -->
+  <div class="contenedorEspera ocultar">
+    <div class="cotizando">
+      <div class="cotizandoEspera">
+        <p>Cotizando</p>
+        <div class="spinner">
+          <div class="bubble-1"></div>
+          <div class="bubble-2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clear"></div>
+
+  <!--  Segundo Contenedor -->
+  <!--  Propuestas de las Coberturas -->
+
   <div class="container-fluid contenedor2 ocultar row">
     <h1 class="text-center titulo">Cotizador de Seguros</h1>
     <p class="text-center subtitulo">Cotiza tu vehículo</p>
@@ -124,7 +145,7 @@
           <p class="card-text text-center" id="cuotasBasica"></p>
           <h5 class="card-title text-center" id="costoBasica"></h5>
           <div class="col-md-12 text-center">
-            <button type="button" class="btn btn-primary fs-6">Contratar</button>
+            <button type="button" class="btn btn-primary fs-6" id="contratarBasica">Contratar</button>
           </div>
         </div>
       </div>
@@ -136,7 +157,7 @@
           <p class="card-text text-center" id="cuotasStandard"></p>
           <h5 class="card-title text-center" id="costoStandard"></h5>
           <div class="col-md-12 text-center">
-            <button type="button" class="btn btn-primary fs-6">Contratar</button>
+            <button type="button" class="btn btn-primary fs-6" id="contratarStandard">Contratar</button>
           </div>
         </div>
       </div>
@@ -148,7 +169,7 @@
           <p class="card-text text-center" id="cuotasPremium"></p>
           <h5 class="card-title text-center" id="costoPremium"></h5>
           <div class="col-md-12 text-center">
-            <button type="button" class="btn btn-primary fs-6">Contratar</button>
+            <button type="button" class="btn btn-primary fs-6" id="contratarPremium">Contratar</button>
           </div>
         </div>
       </div>
@@ -156,6 +177,58 @@
     <div class="form-group d-flex flex-row justify-content-end">
       <button type="button" class="btn btn-primary fs-2 volver" id="volver">Volver</button>
     </div>
+  </div>
+
+
+
+  <!--  Tercer Contenedor -->
+  <!--  Datos de la Contratación -->
+
+  <div class="container-fluid contenedor3 ocultar row">
+    <h1 class="text-center titulo">Cotizador de Seguros</h1>
+    <p class="text-center subtitulo">Cotización Nro. <span id="nroCotizacion"></span></p>
+    <div class="card tarjetaCotizada" id="tarjetaCotizada">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item tituloTarjeta">Vehículo Cotizado</li>
+        <li class="list-group-item" id="autoYAnioCotizado"></li>
+        <li class="list-group-item" id="fabricacionCotizada"></li>
+        <li class="list-group-item" id="provinciaCotizada"></li>
+        <li class="list-group-item" id="cotizacionCobertura"></li>
+        <li class="list-group-item" id="cotizacionValor"></li>
+      </ul>
+    </div>
+    <form class="formulario needs-validation" novalidate>
+      <div class="form-floating">
+        <input type="text" class="form-control" id="inputNombre" placeholder="Nombre y Apellido" required>
+        <label for="inputNombre">Nombre y Apellido</label>
+        <div class="invalid-feedback">
+          Debe ingresar un Nombre y Apellido.
+        </div>
+      </div>
+      <div class="form-floating">
+        <input type="email" class="form-control" id="inputMail" placeholder="name@example.com" required>
+        <label for="inputMail">Email</label>
+        <div class="invalid-feedback">
+          Debe ingresar un mail válido.
+        </div>
+      </div>
+      <div class="form-floating">
+        <input type="tel" class="form-control" id="inputTelefono" placeholder="Teléfono" required>
+        <label for="inputTelefono">Teléfono</label>
+        <div class="invalid-feedback">
+          Debe ingresar un teléfono válido.
+        </div>
+      </div>
+      <div class="form-floating">
+        <textarea class="form-control" placeholder="Comentario" id="comentario" style="height: 75px"></textarea>
+        <label for="comentario">Comentario</label>
+      </div>
+
+      <div class="form-group d-flex flex-row justify-content-between">
+        <button type="submit" class="btn btn-primary fs-2 volver" id="confirmar">Confirmar</button>
+        <button type="button" class="btn btn-primary fs-2 volver" id="volver3">Volver</button>
+      </div>
+    </form>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
