@@ -63,7 +63,7 @@ function aplicarDescuentoAntiguedad(valorCobertura) {
     let i = 0;
     while (cantidadAnios != i) {
         valorCobertura -= valorCobertura * 3 / 100;
-        i += 1;
+        i++;
     }
     return valorCobertura;
 }
@@ -102,11 +102,7 @@ document.getElementById('cotizar').onclick = function () {
     // Si el vehiculo es un auto subimos un 5% el costo, si es otro subimos un 15%
     const esUnAuto = ["Fiat Cronos", "Peugeot 208", "Toyota Etios", "Chevrolet Cruze", "Renault Kangoo", "Toyota Corolla", "Citroën C4 Cactus"]
 
-    if (esUnAuto.includes(vehiculoCotizado.auto)) {
-        coberturaBasica.valor *= 1.05
-    } else {
-        coberturaBasica.valor *= 1.15
-    }
+    esUnAuto.includes(vehiculoCotizado.auto) ? coberturaBasica.valor *= 1.05 : coberturaBasica.valor *= 1.15;
 
     // Aplicamos un 3% de descuento por cada año, sobre el saldo de cada año
     aplicarDescuentoAntiguedad(coberturaBasica.valor);
@@ -121,9 +117,9 @@ document.getElementById('cotizar').onclick = function () {
             break;
     }
 
-    const buscoProvincia = provincias.find((provincia) => provincia.nombre === vehiculoCotizado.provincia)
-
-    switch (buscoProvincia.riesgo) {
+    const { riesgo } = provincias.find((provincia) => provincia.nombre === vehiculoCotizado.provincia)
+     
+    switch (riesgo) {
         case 'Muy Alto':
             coberturaStandard.valor *= 1.45
             break;
@@ -147,11 +143,10 @@ document.getElementById('cotizar').onclick = function () {
 
     document.getElementById('autoMasAnioCotizado').textContent = "Auto Cotizado: " + vehiculoCotizado.auto + " - Año Cotizado: " + vehiculoCotizado.anio;
     
-    if (vehiculoCotizado.fabricacion == 'nacional') {
+    vehiculoCotizado.fabricacion == 'nacional' ?
+        document.getElementById('fabricacionMasProvinciaCotizada').textContent = "Fabricación: " + vehiculoCotizado.fabricacion + " - Provincia: " + vehiculoCotizado.provincia
+    :
         document.getElementById('fabricacionMasProvinciaCotizada').textContent = "Fabricación: " + vehiculoCotizado.fabricacion + " - Provincia: " + vehiculoCotizado.provincia;
-    } else {
-        document.getElementById('fabricacionMasProvinciaCotizada').textContent = "Fabricación: " + vehiculoCotizado.fabricacion + " - Provincia: " + vehiculoCotizado.provincia;
-    }
     
     document.getElementById('costoBasica').textContent = "$ " + coberturaBasica.valor;
     document.getElementById('costoStandard').textContent = "$ " + coberturaStandard.valor;
