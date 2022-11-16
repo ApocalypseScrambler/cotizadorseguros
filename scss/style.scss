@@ -4,9 +4,9 @@
 @import 'base/globales';
 @import 'base/mixins';
 
-.contenedor,
-.contenedor2,
-.contenedor3 {
+.pantalla,
+.pantalla2,
+.pantalla3 {
     border-radius: $borde-redondo;
     width: 90%;
     display: flex;
@@ -21,7 +21,7 @@
     align-items: center;
 }
 
-.contenedor2 {
+.pantalla2 {
     align-items: center;
 }
 

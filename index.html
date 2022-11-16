@@ -15,10 +15,10 @@
 
 <body class="row justify-content-center align-items-center">
 
-  <!--  Primer Contenedor -->
+  <!--  Primera Pantalla -->
   <!--  Opciones de contratación del seguro -->
 
-  <div class="container-fluid contenedor row">
+  <div class="container-fluid pantalla row">
     <h1 class="text-center titulo">Cotizador de Seguros</h1>
     <p class="text-center subtitulo">Cotiza tu vehículo</p>
     <form class="formulario">
@@ -114,7 +114,7 @@
   </div>
 
   <!--  Espera -->
-  <div class="contenedorEspera ocultar">
+  <div class="pantallaEspera ocultar">
     <div class="cotizando">
       <div class="cotizandoEspera">
         <p>Cotizando</p>
@@ -127,10 +127,10 @@
   </div>
   <div class="clear"></div>
 
-  <!--  Segundo Contenedor -->
+  <!--  Segunda Pantalla -->
   <!--  Propuestas de las Coberturas -->
 
-  <div class="container-fluid contenedor2 ocultar row">
+  <div class="container-fluid pantalla2 ocultar row">
     <h1 class="text-center titulo">Cotizador de Seguros</h1>
     <p class="text-center subtitulo">Cotiza tu vehículo</p>
     <ul class="list-group list-group-flush listaCotizada">
@@ -140,12 +140,12 @@
     <div class="tarjetas">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Cobertura Básica</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Responsabilidad Civil Unicamente</h6>
-          <p class="card-text text-center" id="cuotasBasica"></p>
-          <h5 class="card-title text-center" id="costoBasica"></h5>
+          <h5 class="card-title">Cobertura Premium</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Todo Riesgo</h6>
+          <p class="card-text text-center" id="cuotasPremium"></p>
+          <h5 class="card-title text-center" id="costoPremium"></h5>
           <div class="col-md-12 text-center">
-            <button type="button" class="btn btn-primary fs-6" id="contratarBasica">Contratar</button>
+            <button type="button" class="btn btn-primary fs-6" id="contratarPremium">Contratar</button>
           </div>
         </div>
       </div>
@@ -161,15 +161,14 @@
           </div>
         </div>
       </div>
-
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Cobertura Premium</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Todo Riesgo</h6>
-          <p class="card-text text-center" id="cuotasPremium"></p>
-          <h5 class="card-title text-center" id="costoPremium"></h5>
+          <h5 class="card-title">Cobertura Básica</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Responsabilidad Civil Unicamente</h6>
+          <p class="card-text text-center" id="cuotasBasica"></p>
+          <h5 class="card-title text-center" id="costoBasica"></h5>
           <div class="col-md-12 text-center">
-            <button type="button" class="btn btn-primary fs-6" id="contratarPremium">Contratar</button>
+            <button type="button" class="btn btn-primary fs-6" id="contratarBasica">Contratar</button>
           </div>
         </div>
       </div>
@@ -181,10 +180,10 @@
 
 
 
-  <!--  Tercer Contenedor -->
+  <!--  Tercera Pantalla -->
   <!--  Datos de la Contratación -->
 
-  <div class="container-fluid contenedor3 ocultar row">
+  <div class="container-fluid pantalla3 ocultar row">
     <h1 class="text-center titulo">Cotizador de Seguros</h1>
     <p class="text-center subtitulo">Cotización Nro. <span id="nroCotizacion"></span></p>
     <div class="card tarjetaCotizada" id="tarjetaCotizada">
@@ -225,8 +224,8 @@
       </div>
 
       <div class="form-group d-flex flex-row justify-content-between">
-        <button type="submit" class="btn btn-primary fs-2 volver" id="confirmar">Confirmar</button>
         <button type="button" class="btn btn-primary fs-2 volver" id="volver3">Volver</button>
+        <button type="submit" class="btn btn-primary fs-2 volver" id="confirmar">Confirmar</button>
       </div>
     </form>
   </div>

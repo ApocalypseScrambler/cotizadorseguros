@@ -340,9 +340,9 @@ body {
   background: #fff url(/img/highway.jpg) center center/cover no-repeat;
 }
 
-.contenedor,
-.contenedor2,
-.contenedor3 {
+.pantalla,
+.pantalla2,
+.pantalla3 {
   border-radius: 8px;
   width: 90%;
   display: flex;
@@ -357,7 +357,7 @@ body {
   align-items: center;
 }
 
-.contenedor2 {
+.pantalla2 {
   align-items: center;
 }
 

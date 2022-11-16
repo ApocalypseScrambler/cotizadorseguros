@@ -1,7 +1,7 @@
-const contenedor = document.querySelector('.contenedor');
-const contenedor2 = document.querySelector('.contenedor2');
-const contenedor3 = document.querySelector('.contenedor3');
-const contenedorEspera = document.querySelector('.contenedorEspera');
+const pantalla = document.querySelector('.pantalla');
+const pantalla2 = document.querySelector('.pantalla2');
+const pantalla3 = document.querySelector('.pantalla3');
+const pantallaEspera = document.querySelector('.pantallaEspera');
 
 class cobertura {
     constructor(valor) {
@@ -25,10 +25,10 @@ const coberturaStandard = new cobertura(0);
 const coberturaPremium = new cobertura(0);
 
 const vehiculoCotizado = {
-    fabricacion: document.querySelector('input[type=radio][name=fabricacion]:checked').value,
-    auto: document.getElementById('seleccionAuto').value,
-    anio: document.getElementById('seleccionAnio').value,
-    provincia: document.getElementById('provinciaRiesgo').value
+    fabricacion: '',
+    auto: '',
+    anio: '',
+    provincia: ''
 }
 
 const provincias = [
@@ -81,11 +81,24 @@ function creoTarjetaCotizacion() {
     document.getElementById('provinciaCotizada').textContent = "Provincia de " + cotizacionRecupero.provincia;
 }
 
+function cotizacionFinal() {
+    pantalla2.classList.add('ocultar');
+    pantalla3.classList.remove('ocultar');
+    creoTarjetaCotizacion();
+}
+
 document.getElementById('nroCotizacion').textContent = obtenerNroCotizacion();
 
+// Genero cotización
 document.getElementById('cotizar').onclick = function () {
-
+    
     sessionStorage.clear();
+    
+    vehiculoCotizado.fabricacion = document.querySelector('input[type=radio][name=fabricacion]:checked').value; 
+    vehiculoCotizado.auto = document.getElementById('seleccionAuto').value;
+    vehiculoCotizado.anio = document.getElementById('seleccionAnio').value;
+    vehiculoCotizado.provincia = document.getElementById('provinciaRiesgo').value;
+    
     // Si el vehiculo es un auto subimos un 5% el costo, si es otro subimos un 15%
     const esUnAuto = ["Fiat Cronos", "Peugeot 208", "Toyota Etios", "Chevrolet Cruze", "Renault Kangoo", "Toyota Corolla", "Citroën C4 Cactus"]
 
@@ -148,11 +161,11 @@ document.getElementById('cotizar').onclick = function () {
     document.getElementById('cuotasStandard').textContent = "3 cuotas de $ " + coberturaStandard.cuotas();
     document.getElementById('cuotasPremium').textContent = "3 cuotas de $ " + coberturaPremium.cuotas();
     
-    contenedor.classList.add('ocultar');
-    contenedorEspera.classList.remove('ocultar');
+    pantalla.classList.add('ocultar');
+    pantallaEspera.classList.remove('ocultar');
     setTimeout(function () {
-        contenedorEspera.classList.add('ocultar');
-        contenedor2.classList.remove('ocultar');
+        pantallaEspera.classList.add('ocultar');
+        pantalla2.classList.remove('ocultar');
     }, 3000);
 
     const cotizacionGuardado = JSON.stringify(vehiculoCotizado);
@@ -165,25 +178,26 @@ document.getElementById('cotizar').onclick = function () {
     sessionStorage.setItem('cuotasPremium', coberturaPremium.cuotas());
 }
 
+// Vuelvo a la pantalla 1
 document.getElementById('volver').onclick = function () {
 
-    contenedor.classList.remove('ocultar');
-    contenedor2.classList.add('ocultar');
+    pantalla.classList.remove('ocultar');
+    pantalla2.classList.add('ocultar');
 
 }
 
+// Vuelvo a la pantalla 2
 document.getElementById('volver3').onclick = function () {
 
-    contenedor.classList.remove('ocultar');
-    contenedor3.classList.add('ocultar');
+    pantalla2.classList.remove('ocultar');
+    pantalla3.classList.add('ocultar');
 
 }
+
 
 document.getElementById('contratarPremium').onclick = function () {
     
-    contenedor2.classList.add('ocultar');
-    contenedor3.classList.remove('ocultar');
-    creoTarjetaCotizacion();
+    cotizacionFinal();
     document.getElementById('cotizacionCobertura').textContent = "Cobertura Premium";
     document.getElementById('cotizacionValor').textContent = "$ " + sessionStorage.getItem('costoPremium') + " en 3 cuotas de " + sessionStorage.getItem('cuotasPremium');
     
@@ -191,9 +205,7 @@ document.getElementById('contratarPremium').onclick = function () {
 
 document.getElementById('contratarStandard').onclick = function () {
     
-    contenedor2.classList.add('ocultar');
-    contenedor3.classList.remove('ocultar');
-    creoTarjetaCotizacion();
+    cotizacionFinal();
     document.getElementById('cotizacionCobertura').textContent = "Cobertura Standard";
     document.getElementById('cotizacionValor').textContent = "$ " + sessionStorage.getItem('costoStandard') + " en 3 cuotas de " + sessionStorage.getItem('cuotasStandard');
     
@@ -201,30 +213,27 @@ document.getElementById('contratarStandard').onclick = function () {
 
 document.getElementById('contratarBasica').onclick = function () {
 
-    contenedor2.classList.add('ocultar');
-    contenedor3.classList.remove('ocultar');
-    creoTarjetaCotizacion();
+    cotizacionFinal();
     document.getElementById('cotizacionCobertura').textContent = "Cobertura Básica";
     document.getElementById('cotizacionValor').textContent = "$ " + sessionStorage.getItem('costoBasica') + " en 3 cuotas de " + sessionStorage.getItem('cuotasBasica');
 
 }
 
+// Validación de los datos de los formularios
 document.getElementById('confirmar').onclick = function () {
 
     'use strict'
   
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    const forms = document.querySelectorAll('.needs-validation')
+    const formularios = document.querySelectorAll('.needs-validation')
   
-    // Loop over them and prevent submission
-    Array.from(forms).forEach(form => {
-      form.addEventListener('submit', event => {
-        if (!form.checkValidity()) {
+    Array.from(formularios).forEach(formularios => {
+      formularios.addEventListener('submit', event => {
+        if (!formularios.checkValidity()) {
           event.preventDefault()
           event.stopPropagation()
         }
   
-        form.classList.add('was-validated')
+        formularios.classList.add('was-validated')
       }, false)
     })
   }
