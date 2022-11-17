@@ -6,7 +6,8 @@
 
 .pantalla,
 .pantalla2,
-.pantalla3 {
+.pantalla3,
+.pantallaFin {
     border-radius: $borde-redondo;
     width: 90%;
     display: flex;
@@ -197,7 +198,8 @@
 
 }
 
-.cotizando {
+.cotizando,
+.pantallaFin {
     float: left;
     width: 25rem;
     height: 25rem;
@@ -209,10 +211,10 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
 
-.cotizando p {
-    font-size: large;
+    p {
+        font-size: large;
+    }
 }
 
 .spinner {
@@ -303,4 +305,31 @@
 .tituloTarjeta {
     text-decoration: underline;
     font-weight: bold;
+}
+
+.background {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.pantallaFin {
+    width: 40rem;
+    height: 40rem;
+    z-index: 1;
+}
+
+@include moviles {
+    .pantallaFin {
+        width: 25rem;
+        height: 25rem;
+        font-size: 1rem;
+    }
+
+    .conteo {
+        width: 15rem;
+        height: 15rem;
+    }
 }

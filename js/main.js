@@ -2,6 +2,7 @@ const pantalla = document.querySelector('.pantalla');
 const pantalla2 = document.querySelector('.pantalla2');
 const pantalla3 = document.querySelector('.pantalla3');
 const pantallaEspera = document.querySelector('.pantallaEspera');
+const pantallaFin = document.querySelector('.pantallaFin');
 
 class cobertura {
     constructor(valor) {
@@ -91,14 +92,14 @@ document.getElementById('nroCotizacion').textContent = obtenerNroCotizacion();
 
 // Genero cotización
 document.getElementById('cotizar').onclick = function () {
-    
+
     sessionStorage.clear();
-    
-    vehiculoCotizado.fabricacion = document.querySelector('input[type=radio][name=fabricacion]:checked').value; 
+
+    vehiculoCotizado.fabricacion = document.querySelector('input[type=radio][name=fabricacion]:checked').value;
     vehiculoCotizado.auto = document.getElementById('seleccionAuto').value;
     vehiculoCotizado.anio = document.getElementById('seleccionAnio').value;
     vehiculoCotizado.provincia = document.getElementById('provinciaRiesgo').value;
-    
+
     // Si el vehiculo es un auto subimos un 5% el costo, si es otro subimos un 15%
     const esUnAuto = ["Fiat Cronos", "Peugeot 208", "Toyota Etios", "Chevrolet Cruze", "Renault Kangoo", "Toyota Corolla", "Citroën C4 Cactus"]
 
@@ -118,7 +119,7 @@ document.getElementById('cotizar').onclick = function () {
     }
 
     const { riesgo } = provincias.find((provincia) => provincia.nombre === vehiculoCotizado.provincia)
-     
+
     switch (riesgo) {
         case 'Muy Alto':
             coberturaStandard.valor *= 1.45
@@ -142,12 +143,12 @@ document.getElementById('cotizar').onclick = function () {
     coberturaPremium.costo();
 
     document.getElementById('autoMasAnioCotizado').textContent = "Auto Cotizado: " + vehiculoCotizado.auto + " - Año Cotizado: " + vehiculoCotizado.anio;
-    
+
     vehiculoCotizado.fabricacion == 'nacional' ?
         document.getElementById('fabricacionMasProvinciaCotizada').textContent = "Fabricación: " + vehiculoCotizado.fabricacion + " - Provincia: " + vehiculoCotizado.provincia
-    :
+        :
         document.getElementById('fabricacionMasProvinciaCotizada').textContent = "Fabricación: " + vehiculoCotizado.fabricacion + " - Provincia: " + vehiculoCotizado.provincia;
-    
+
     document.getElementById('costoBasica').textContent = "$ " + coberturaBasica.valor;
     document.getElementById('costoStandard').textContent = "$ " + coberturaStandard.valor;
     document.getElementById('costoPremium').textContent = "$ " + coberturaPremium.valor;
@@ -155,7 +156,7 @@ document.getElementById('cotizar').onclick = function () {
     document.getElementById('cuotasBasica').textContent = "3 cuotas de $ " + coberturaBasica.cuotas();
     document.getElementById('cuotasStandard').textContent = "3 cuotas de $ " + coberturaStandard.cuotas();
     document.getElementById('cuotasPremium').textContent = "3 cuotas de $ " + coberturaPremium.cuotas();
-    
+
     pantalla.classList.add('ocultar');
     pantallaEspera.classList.remove('ocultar');
     setTimeout(function () {
@@ -191,19 +192,19 @@ document.getElementById('volver3').onclick = function () {
 
 
 document.getElementById('contratarPremium').onclick = function () {
-    
+
     cotizacionFinal();
     document.getElementById('cotizacionCobertura').textContent = "Cobertura Premium";
     document.getElementById('cotizacionValor').textContent = "$ " + sessionStorage.getItem('costoPremium') + " en 3 cuotas de " + sessionStorage.getItem('cuotasPremium');
-    
+
 }
 
 document.getElementById('contratarStandard').onclick = function () {
-    
+
     cotizacionFinal();
     document.getElementById('cotizacionCobertura').textContent = "Cobertura Standard";
     document.getElementById('cotizacionValor').textContent = "$ " + sessionStorage.getItem('costoStandard') + " en 3 cuotas de " + sessionStorage.getItem('cuotasStandard');
-    
+
 }
 
 document.getElementById('contratarBasica').onclick = function () {
@@ -214,21 +215,41 @@ document.getElementById('contratarBasica').onclick = function () {
 
 }
 
-// Validación de los datos de los formularios
+function activarFuegosArtificiales() {
+    (async () => {
+        await loadFireworksPreset(tsParticles);
+
+        await tsParticles.load("tsparticles", {
+            preset: "fireworks",
+        });
+    })();
+}
+
+// Validación de los datos del formulario
 document.getElementById('confirmar').onclick = function () {
 
     'use strict'
-  
-    const formularios = document.querySelectorAll('.needs-validation')
-  
-    Array.from(formularios).forEach(formularios => {
-      formularios.addEventListener('submit', event => {
-        if (!formularios.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
+
+    const formulario = document.querySelector('.needs-validation')
+
+    formulario.addEventListener('submit', evt => {
+        if (!formulario.checkValidity()) {
+            evt.preventDefault()
+            evt.stopPropagation()
+            formulario.classList.add('was-validated')
+        } else {
+
+           pantallaFin.classList.remove('ocultar');
+            pantalla3.classList.add('ocultar');
+
+            document.body.innerHTML += '<canvas class="background" id="canvas"></canvas>';
+            activarFuegosArtificiales();
+
+
+            setTimeout(function () {
+                window.location.reload();
+            }, 5000);
         }
-  
-        formularios.classList.add('was-validated')
-      }, false)
-    })
-  }
+
+    }, false)
+}
