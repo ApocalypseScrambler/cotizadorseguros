@@ -333,3 +333,14 @@
         height: 15rem;
     }
 }
+
+.vencimiento {
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+@include moviles {
+    .vencimiento{
+        font-size: 1rem;
+    }
+}

@@ -86,6 +86,10 @@ function cotizacionFinal() {
     pantalla2.classList.add('ocultar');
     pantalla3.classList.remove('ocultar');
     creoTarjetaCotizacion();
+    let vto = luxon.DateTime.now();
+    vto = vto.plus({days: 10});
+    const formato = {day: 'numeric', month: 'long', year: 'numeric'};
+    document.getElementById('vtoCotizacion').textContent = "Cotización válida hasta el " + vto.toLocaleString(formato);
 }
 
 document.getElementById('nroCotizacion').textContent = obtenerNroCotizacion();

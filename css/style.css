@@ -632,5 +632,15 @@ body {
     height: 15rem;
   }
 }
+.vencimiento {
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+@media (max-width: 576px) {
+  .vencimiento {
+    font-size: 1rem;
+  }
+}
 
 /*# sourceMappingURL=style.css.map */
