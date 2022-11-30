@@ -87,9 +87,19 @@ function cotizacionFinal() {
     pantalla3.classList.remove('ocultar');
     creoTarjetaCotizacion();
     let vto = luxon.DateTime.now();
-    vto = vto.plus({days: 10});
-    const formato = {day: 'numeric', month: 'long', year: 'numeric'};
+    vto = vto.plus({ days: 10 });
+    const formato = { day: 'numeric', month: 'long', year: 'numeric' };
     document.getElementById('vtoCotizacion').textContent = "Cotización válida hasta el " + vto.toLocaleString(formato);
+}
+
+function activarFuegosArtificiales() {
+    (async () => {
+        await loadFireworksPreset(tsParticles);
+
+        await tsParticles.load("tsparticles", {
+            preset: "fireworks",
+        });
+    })();
 }
 
 document.getElementById('nroCotizacion').textContent = obtenerNroCotizacion();
@@ -219,16 +229,6 @@ document.getElementById('contratarBasica').onclick = function () {
 
 }
 
-function activarFuegosArtificiales() {
-    (async () => {
-        await loadFireworksPreset(tsParticles);
-
-        await tsParticles.load("tsparticles", {
-            preset: "fireworks",
-        });
-    })();
-}
-
 // Validación de los datos del formulario
 document.getElementById('confirmar').onclick = function () {
 
@@ -243,7 +243,7 @@ document.getElementById('confirmar').onclick = function () {
             formulario.classList.add('was-validated')
         } else {
 
-           pantallaFin.classList.remove('ocultar');
+            pantallaFin.classList.remove('ocultar');
             pantalla3.classList.add('ocultar');
 
             document.body.innerHTML += '<canvas class="background" id="canvas"></canvas>';
@@ -256,4 +256,34 @@ document.getElementById('confirmar').onclick = function () {
         }
 
     }, false)
+}
+
+document.getElementById('detallePremium').onclick = function () {
+    muestroDetalleCobertura("premium")
+}
+
+document.getElementById('detalleStandard').onclick = function () {
+    muestroDetalleCobertura("standard")
+}
+
+document.getElementById('detalleBasica').onclick = function () {
+    muestroDetalleCobertura("basica")
+}
+
+function muestroDetalleCobertura(cobertura) {
+
+    const archivo = `data/${cobertura}.txt`
+    fetch(archivo)
+        .then((respuesta) => {
+            return respuesta.text()
+        })
+        .then((texto) => {
+            swal({
+                title: "Detalle Cobertura",
+                text: texto,
+            })
+        })
+        .catch((error) => {
+            swal("Error al acceder a la información")
+        })
 }
