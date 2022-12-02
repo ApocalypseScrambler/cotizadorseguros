@@ -259,31 +259,44 @@ document.getElementById('confirmar').onclick = function () {
 }
 
 document.getElementById('detallePremium').onclick = function () {
-    muestroDetalleCobertura("premium")
+    muestroDetalleCobertura("PREMIUM")
 }
 
 document.getElementById('detalleStandard').onclick = function () {
-    muestroDetalleCobertura("standard")
+    muestroDetalleCobertura("STANDARD")
 }
 
 document.getElementById('detalleBasica').onclick = function () {
-    muestroDetalleCobertura("basica")
+    muestroDetalleCobertura("BASICA")
 }
 
 function muestroDetalleCobertura(cobertura) {
-
-    const archivo = `data/${cobertura}.txt`
-    fetch(archivo)
+    
+    fetch('data/coberturas.json')
         .then((respuesta) => {
-            return respuesta.text()
+            return respuesta.json();
         })
-        .then((texto) => {
-            swal({
-                title: "Detalle Cobertura",
-                text: texto,
+        .then((coberturas) => {
+            coberturas.forEach((unaCobertura) => {
+                
+                if (unaCobertura.nombre === cobertura) {
+                    const texto =
+                        `${unaCobertura.rc}
+                        ${unaCobertura.robo}
+                        ${unaCobertura.incendio}
+                        ${unaCobertura.accidente}
+                        ${unaCobertura.cerraduras}
+                        ${unaCobertura.cristales}
+                        ${unaCobertura.parabrisas}
+                        ${unaCobertura.granizo}`;
+                    swal({
+                        title: "Detalle Cobertura " + unaCobertura.nombre,
+                        text: texto,
+                    })
+                }
             })
         })
         .catch((error) => {
-            swal("Error al acceder a la información")
+            swal("Error al acceder a la información", error);
         })
 }

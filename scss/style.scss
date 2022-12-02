@@ -340,7 +340,20 @@
 }
 
 @include moviles {
-    .vencimiento{
+    .vencimiento {
         font-size: 1rem;
+    }
+}
+
+.detalleCobertura {
+    font-size: 1.3rem;
+    font-style: italic;
+    text-decoration: underline;
+}
+
+@include moviles {
+    .detalleCobertura {
+        font-size: 1rem;
+
     }
 }

@@ -642,5 +642,16 @@ body {
     font-size: 1rem;
   }
 }
+.detalleCobertura {
+  font-size: 1.3rem;
+  font-style: italic;
+  text-decoration: underline;
+}
+
+@media (max-width: 576px) {
+  .detalleCobertura {
+    font-size: 1rem;
+  }
+}
 
 /*# sourceMappingURL=style.css.map */

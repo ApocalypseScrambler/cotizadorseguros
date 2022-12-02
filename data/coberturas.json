@@ -1,0 +1,35 @@
+[
+    {
+        "nombre": "BASICA",
+        "rc": "- Responsabilidad Civil hacia Terceros exclusivamente hasta $23.000.000.-",
+        "robo": "- Robo: No Cubre",
+        "incendio": "- Incendio: No Cubre",
+        "accidente": "- Accidente: No cubre daños propios derivados de un accidente.",
+        "cerraduras": "- Cerraduras: No Cubre",
+        "cristales": "- Cristales: No Cubre",
+        "parabrisas": "- Parabrisas: No Cubre",
+        "granizo": "- Granizo: No Cubre"
+    },
+    {
+        "nombre": "STANDARD",
+        "rc": "- Responsabilidad Civil hacia Terceros exclusivamente hasta $23.000.000.-",
+        "robo": "- Robo: Total y Parcial",
+        "incendio": "- Incendio: Total y Parcial",
+        "accidente": "- Accidente: No cubre daños propios derivados de un accidente.",
+        "cerraduras": "- Cerraduras: hasta un 5% de la suma asegurada, un evento por año de vigencia.",
+        "cristales": "- Cristales Laterales: hasta un 10% de la suma asegurada, un evento por año de vigencia.",
+        "parabrisas": "- Parabrisas, Lunetas y Techo Solar: hasta un 15% de la suma asegurada, un evento por año de vigencia.",
+        "granizo": "- Granizo: hasta un 20% de la suma asegurada, un evento por año de vigencia."
+    },
+    {
+        "nombre": "PREMIUM",
+        "rc": "- Responsabilidad Civil hacia Terceros exclusivamente hasta $23.000.000.-",
+        "robo": "- Robo: Total y Parcial",
+        "incendio": "- Incendio: Total y Parcial",
+        "accidente": "- Accidente: Daños Totales o Parciales a raíz de un accidente.",
+        "cerraduras": "- Cerraduras: sin Límite y sin franquicia, un evento por año de vigencia.",
+        "cristales": "- Cristales Laterales: sin Límite y sin franquicia, un evento por año de vigencia.",
+        "parabrisas": "- Parabrisas, Luneta y Techo Solar: sin Límite y sin franquicia, un evento por año de vigencia.",
+        "granizo": "- Granizo: sin Límite y sin franquicia, un evento por año de vigencia."
+    }
+]
