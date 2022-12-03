@@ -2,7 +2,7 @@
 Proyecto Curso CoderHouse de JavaScript donde se aplico los distintos conceptos aprendidos durante el curso...
 
 ###Conceptos aplicados:
--Conceptos generales: Sintaxis y variables
+* Conceptos generales: Sintaxis y variables
 -Control de flujos
 -Ciclos e iteraciones
 -Funciones
